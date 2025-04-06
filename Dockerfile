@@ -8,6 +8,7 @@ RUN apt update && apt install -y --no-install-recommends \
     python3-pip \
     jq \
     gdb \
+    vim \
     && rm -rf /var/lib/apt/lists/*
     
 # AtCoder用ツールのインストール    
@@ -23,7 +24,7 @@ COPY .config/alias.sh /etc/profile.d/alias.sh
 COPY .config/bash_custom.sh /etc/profile.d/bash_custom.sh
 
 #大文字小文字を区別せずに補完
-# bush設定ファイルの作成
+# bash設定ファイルの作成
 RUN echo 'set completion-ignore-case on' >> /etc/inputrc && \
     cat /etc/profile.d/alias.sh >> /etc/bash.bashrc && \
     cat /etc/profile.d/bash_custom.sh >> /etc/bash.bashrc
